@@ -23,8 +23,10 @@ canvas.addEventListener('click', function(event){
 canvas.addEventListener('mousemove', function(event){
     mouse.x = event.x;
     mouse.y = event.y;
-} )
-
+    for (let i = 0; i < 10; i++){
+        particlesArray.push(new Particle());
+} 
+})
 class Particle {
     constructor (){
         this.x = mouse.x;
@@ -42,7 +44,7 @@ class Particle {
         if (this.size > 0.2) this.size -= 0.1;//Shrink down this.size
     }
     draw(){
-        ctx.fillStyle = 'brown';
+        ctx.fillStyle = 'white';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -68,7 +70,8 @@ function handleParticles(){
 }
 
 function animate(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Pour annuler et retourner à Paint style, placer cette ligne en commentaire
+    //ctx.clearRect(0, 0, canvas.width, canvas.height); // Pour annuler et retourner à Paint style, placer cette ligne en commentaire
+    ctx.fillStyle = 'black'; 
     handleParticles();
     requestAnimationFrame(animate); 
 }
